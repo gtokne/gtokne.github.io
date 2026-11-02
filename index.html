@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokné Gamaïdandi – Électronique et systèmes embarqués</title>
+<meta name="description" content="Portfolio de Tokné Gamaïdandi, titulaire d'une licence professionnelle en électronique : projets, expériences et compétences en électronique, automatique et systèmes embarqués.">
+<meta property="og:title" content="Tokné Gamaïdandi – Électronique et systèmes embarqués">
+<meta property="og:description" content="Projets, expériences et compétences en électronique, automatique et systèmes embarqués.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --navy: #1F3864;
+    --navy-soft: #2E4D84;
+    --ink: #1c2230;
+    --muted: #5a6475;
+    --line: #dde3ec;
+    --bg: #ffffff;
+    --bg-alt: #f5f7fb;
+    --badge: #e8eef8;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Calibri, Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  a { color: var(--navy-soft); }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+  /* Navigation */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255,255,255,.95);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(6px);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+  nav .brand { font-weight: 700; color: var(--navy); text-decoration: none; white-space: nowrap; }
+  nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; overflow-x: auto; }
+  nav ul a { color: var(--ink); text-decoration: none; font-size: 14px; white-space: nowrap; }
+  nav ul a:hover { color: var(--navy); }
+
+  /* Accueil */
+  header.hero { padding: 64px 0 48px; background: linear-gradient(180deg, var(--bg-alt), var(--bg)); }
+  .hero h1 { font-size: clamp(30px, 6vw, 44px); color: var(--navy); margin: 0 0 6px; line-height: 1.15; }
+  .hero .role { font-size: 18px; font-weight: 600; margin: 0 0 18px; }
+  .hero p.intro { max-width: 680px; color: var(--muted); margin: 0 0 26px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 10px 18px; border-radius: 6px; text-decoration: none;
+    font-weight: 600; font-size: 15px; border: 2px solid var(--navy);
+  }
+  .btn.primary { background: var(--navy); color: #fff; }
+  .btn.ghost { color: var(--navy); background: transparent; }
+  .btn:hover { opacity: .88; }
+
+  /* Sections */
+  section { padding: 48px 0; border-top: 1px solid var(--line); }
+  h2 {
+    color: var(--navy); text-transform: uppercase; letter-spacing: .04em;
+    font-size: 20px; margin: 0 0 22px; padding-bottom: 8px; border-bottom: 2px solid var(--navy);
+  }
+  h3 { font-size: 17px; margin: 0; }
+  .hint { color: var(--muted); font-size: 14px; margin: -10px 0 18px; }
+  .group-title { font-weight: 700; color: var(--navy-soft); margin: 26px 0 10px; font-size: 15px; }
+
+  /* Cartes repliables */
+  details.card {
+    border: 1px solid var(--line); border-radius: 8px; margin-bottom: 12px; background: #fff;
+    transition: box-shadow .2s;
+  }
+  details.card[open] { box-shadow: 0 4px 16px rgba(31,56,100,.08); }
+  details.card summary {
+    list-style: none; cursor: pointer; padding: 14px 18px;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  details.card summary::-webkit-details-marker { display: none; }
+  details.card summary::before {
+    content: "+"; color: var(--navy); font-weight: 700; width: 14px; flex: none;
+  }
+  details.card[open] summary::before { content: "−"; }
+  .sum-main { flex: 1; min-width: 200px; }
+  .sum-main .ctx { color: var(--muted); font-size: 14px; }
+  .date { font-style: italic; color: var(--muted); font-size: 14px; white-space: nowrap; }
+  .tag-current {
+    display: inline-block; background: var(--navy); color: #fff; font-size: 12px;
+    padding: 1px 8px; border-radius: 10px; margin-left: 6px; font-style: normal; vertical-align: 1px;
+  }
+  .card-body { padding: 0 18px 18px 44px; }
+  .card-body h4 { margin: 14px 0 4px; font-size: 14px; text-transform: uppercase; letter-spacing: .03em; color: var(--navy-soft); }
+  .card-body ul { margin: 4px 0; padding-left: 20px; }
+  .card-body p { margin: 4px 0; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .badge { background: var(--badge); color: var(--navy); font-size: 13px; padding: 2px 10px; border-radius: 12px; }
+
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; }
+  .gallery:empty { display: none; }
+  .gallery figure { margin: 0; cursor: zoom-in; }
+  .gallery img { width: 100%; height: 110px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+  .gallery figcaption { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* Compétences */
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .box { background: var(--bg-alt); border-radius: 8px; padding: 16px 18px; }
+  .box h3 { color: var(--navy); font-size: 15px; margin-bottom: 8px; }
+  .box ul { margin: 0; padding-left: 18px; }
+  .box li { margin-bottom: 3px; }
+
+  /* Parcours */
+  .timeline { position: relative; margin: 0; padding: 0 0 0 26px; list-style: none; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+  .timeline li { position: relative; margin-bottom: 22px; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -24px; top: 6px; width: 12px; height: 12px;
+    border-radius: 50%; background: #fff; border: 3px solid var(--navy);
+  }
+  .timeline .t-date { font-size: 14px; color: var(--muted); font-style: italic; }
+  .timeline .t-title { font-weight: 700; }
+  .timeline .t-place { color: var(--muted); font-size: 15px; }
+
+  /* Contact */
+  .contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .contact-list strong { display: inline-block; min-width: 110px; }
+
+  footer { padding: 26px 0 40px; color: var(--muted); font-size: 13px; text-align: center; border-top: 1px solid var(--line); }
+
+  /* Visionneuse d'images */
+  #viewer {
+    position: fixed; inset: 0; background: rgba(10,15,25,.88); display: none;
+    align-items: center; justify-content: center; flex-direction: column; padding: 20px; z-index: 50; cursor: zoom-out;
+  }
+  #viewer.show { display: flex; }
+  #viewer img { max-width: 100%; max-height: 82vh; border-radius: 6px; }
+  #viewer p { color: #fff; margin-top: 12px; text-align: center; }
+
+  @media (max-width: 640px) {
+    nav ul { gap: 14px; }
+    .card-body { padding-left: 18px; }
+    header.hero { padding: 44px 0 36px; }
+  }
+  @media print {
+    nav, .btns, #viewer { display: none !important; }
+    details.card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#accueil">T. Gamaïdandi</a>
+    <ul>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="accueil">
+  <div class="wrap">
+    <h1>Tokné Gamaïdandi</h1>
+    <p class="role">Électronique · Systèmes embarqués · Automatique</p>
+    <p class="intro">
+      Titulaire d’une licence professionnelle en électronique (UCAO, Cotonou) et technicien électronicien en fablab,
+      j’ai conçu un système de gestion intelligente de prises électriques à base d’Arduino.
+      Je souhaite approfondir en cycle ingénieur l’électronique, l’automatique et les systèmes embarqués.
+    </p>
+    <div class="btns">
+      <a class="btn primary" href="#projets">Voir mes projets</a>
+      <a class="btn ghost" href="CV_Tokne_Gamaidandi.pdf" target="_blank" rel="noopener">Télécharger mon CV</a>
+      <a class="btn ghost" href="#contact">Me contacter</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== PROJETS ET EXPÉRIENCES ===================== -->
+<section id="projets">
+  <div class="wrap">
+    <h2>Projets &amp; expériences</h2>
+    <p class="hint">Cliquez sur un projet ou une expérience pour afficher le détail.</p>
+
+    <div class="group-title">Expériences professionnelles</div>
+
+    <details class="card">
+      <summary>
+        <div class="sum-main">
+          <h3>Technicien électronicien – Fablab <span class="tag-current">En cours</span></h3>
+          <div class="ctx">WenakLabs, N’Djaména, Tchad</div>
+        </div>
+      </summary>
+      <div class="card-body">
+        <h4>Missions</h4>
+        <ul>
+          <li>Accompagnement de projets de prototypage électronique (Arduino, capteurs, actionneurs) au sein du fablab.</li>
+          <li>Animation d’ateliers d’initiation à l’électronique et à la fabrication numérique.</li>
+          <li>Maintenance et dépannage des équipements électroniques du laboratoire.</li>
+        </ul>
+        <div class="badges"><span class="badge">Arduino</span><span class="badge">Prototypage</span><span class="badge">Fablab</span><span class="badge">Maintenance</span></div>
+        <div class="gallery">
+          <!-- Exemple : <figure><img src="images/wenaklabs-1.jpg" alt="Atelier au fablab"><figcaption>Atelier au fablab</figcaption></figure> -->
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-main">
+          <h3>Technicien électronicien</h3>
+          <div class="ctx">Africa Pro-Tech Tchad</div>
+        </div>
+        <span class="date">Juillet 2023</span>
+      </summary>
+      <div class="card-body">
+        <h4>Missions</h4>
+        <ul>
+          <li>Diagnostic, réparation et maintenance d’équipements électroniques et informatiques.</li>
+          <li>Identification et remplacement de composants défectueux ; rédaction de rapports d’intervention.</li>
+          <li>Conception de circuits imprimés, assemblage de systèmes électroniques et formation de stagiaires.</li>
+        </ul>
+        <div class="badges"><span class="badge">Diagnostic</span><span class="badge">Soudure</span><span class="badge">Circuits imprimés</span></div>
+        <div class="gallery"></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-main">
+          <h3>Technicien en électronique</h3>
+          <div class="ctx">BLOLAB, Cotonou, Bénin</div>
+        </div>
+        <span class="date">Février – mai 2023</span>
+      </summary>
+      <div class="card-body">
+        <h4>Missions</h4>
+        <ul>
+          <li>Montage de capteurs de température, d’humidité et de qualité de l’air sur prototypes Arduino.</li>
+          <li>Réalisation d’un système d’arrosage automatique.</li>
+          <li>Simulation et vérification de circuits logiques sous Proteus et Quartus.</li>
+        </ul>
+        <div class="badges"><span class="badge">Arduino</span><span class="badge">Capteurs</span><span class="badge">Proteus</span><span class="badge">Quartus</span></div>
+        <div class="gallery"></div>
+      </div>
+    </details>
+
+    <div class="group-title">Projets techniques</div>
+
+    <details class="card">
+      <summary>
+        <div class="sum-main">
+          <h3>Système de gestion intelligente de prises électriques</h3>
+          <div class="ctx">Mémoire de licence, réalisé à BLOLAB</div>
+        </div>
+        <span class="date">Février – juin 2023</span>
+      </summary>
+      <div class="card-body">
+        <h4>Objectif</h4>
+        <p>Concevoir et réaliser un prototype de gestion de prises électriques associant une carte Arduino et un capteur de courant.</p>
+        <h4>Ma contribution</h4>
+        <ul>
+          <li>Montage et programmation du prototype.</li>
+          <li>Rédaction du mémoire et soutenance.</li>
+        </ul>
+        <h4>Résultat</h4>
+        <p>Mémoire soutenu le 14 juin 2023, noté 15/20.</p>
+        <div class="badges"><span class="badge">Arduino</span><span class="badge">Capteur de courant</span><span class="badge">Prototypage</span></div>
+        <div class="gallery"></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-main">
+          <h3>Système d’arrosage automatique</h3>
+          <div class="ctx">BLOLAB, Cotonou</div>
+        </div>
+        <span class="date">2023</span>
+      </summary>
+      <div class="card-body">
+        <h4>Objectif</h4>
+        <p>Automatiser l’arrosage à l’aide d’un prototype à base d’Arduino.</p>
+        <div class="badges"><span class="badge">Arduino</span><span class="badge">Capteurs</span><span class="badge">Automatisation</span></div>
+        <div class="gallery"></div>
+      </div>
+    </details>
+
+    <div class="group-title">Enseignements pratiques de licence</div>
+
+    <details class="card">
+      <summary>
+        <div class="sum-main">
+          <h3>Microcontrôleurs et systèmes embarqués</h3>
+          <div class="ctx">UCAO, Cotonou – licence 2020-2023</div>
+        </div>
+      </summary>
+      <div class="card-body">
+        <ul>
+          <li>Programmation en assembleur des microcontrôleurs (16/20).</li>
+          <li>Programmation Arduino (15,6/20) et MikroC.</li>
+          <li>Circuits programmables : CPLD, FPGA, PSoC ; langage VHDL.</li>
+        </ul>
+        <div class="badges"><span class="badge">Assembleur</span><span class="badge">MikroC</span><span class="badge">VHDL</span><span class="badge">FPGA</span></div>
+        <div class="gallery"></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-main">
+          <h3>Automatique et informatique industrielle</h3>
+          <div class="ctx">UCAO, Cotonou – licence 2020-2023</div>
+        </div>
+      </summary>
+      <div class="card-body">
+        <ul>
+          <li>API et réseaux locaux industriels (15,55/20).</li>
+          <li>GRAFCET, systèmes asservis linéaires continus.</li>
+          <li>Capteurs, actionneurs et conditionnement des signaux.</li>
+        </ul>
+        <div class="badges"><span class="badge">API</span><span class="badge">GRAFCET</span><span class="badge">Asservissement</span></div>
+        <div class="gallery"></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-main">
+          <h3>CAO et simulation électroniques</h3>
+          <div class="ctx">UCAO, Cotonou – licence 2020-2023</div>
+        </div>
+      </summary>
+      <div class="card-body">
+        <ul>
+          <li>CAO de schémas et simulation électroniques (14/20).</li>
+          <li>Projet tutoré avancé (18/20).</li>
+          <li>Diagnostic et maintenance des systèmes électroniques.</li>
+        </ul>
+        <div class="badges"><span class="badge">Proteus</span><span class="badge">Quartus</span><span class="badge">Matlab</span></div>
+        <div class="gallery"></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===================== COMPÉTENCES ===================== -->
+<section id="competences">
+  <div class="wrap">
+    <h2>Compétences</h2>
+    <div class="grid2">
+      <div class="box">
+        <h3>Électronique et maintenance</h3>
+        <ul>
+          <li>Diagnostic de pannes</li>
+          <li>Soudure, remplacement de composants</li>
+          <li>Entretien préventif et réparation</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Conception et simulation</h3>
+        <ul>
+          <li>Schémas et simulation sous Proteus</li>
+          <li>Circuits logiques sous Quartus</li>
+          <li>TinkerCAD, Fritzing, circuits imprimés</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Prototypage et capteurs</h3>
+        <ul>
+          <li>Cartes Arduino</li>
+          <li>Capteurs de courant, température, humidité, qualité de l’air</li>
+          <li>Câblage, test et validation</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Systèmes embarqués (étudiés)</h3>
+        <ul>
+          <li>Microcontrôleurs et DSP, assembleur</li>
+          <li>Langage C, MikroC</li>
+          <li>CPLD, FPGA, PSoC, VHDL</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Automatique (étudiée)</h3>
+        <ul>
+          <li>Signaux et systèmes, asservissements</li>
+          <li>GRAFCET, API, réseaux industriels</li>
+          <li>Capteurs et actionneurs</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Outils et langues</h3>
+        <ul>
+          <li>Arduino IDE, MikroC, Proteus, Quartus, Matlab, LaTeX</li>
+          <li>Français : courant</li>
+          <li>Anglais : intermédiaire</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARCOURS ===================== -->
+<section id="parcours">
+  <div class="wrap">
+    <h2>Parcours</h2>
+    <ul class="timeline">
+      <li>
+        <div class="t-date">En cours</div>
+        <div class="t-title">Technicien électronicien – Fablab</div>
+        <div class="t-place">WenakLabs, N’Djaména</div>
+      </li>
+      <li>
+        <div class="t-date">Juillet 2023</div>
+        <div class="t-title">Technicien électronicien</div>
+        <div class="t-place">Africa Pro-Tech Tchad</div>
+      </li>
+      <li>
+        <div class="t-date">2020 – 2023</div>
+        <div class="t-title">Licence professionnelle – Sciences de l’ingénieur, spécialité Électronique</div>
+        <div class="t-place">UCAO, École de génie électrique et informatique, Cotonou – mémoire 15,67/20 (mention Bien)</div>
+      </li>
+      <li>
+        <div class="t-date">Février – mai 2023</div>
+        <div class="t-title">Technicien en électronique</div>
+        <div class="t-place">BLOLAB, Cotonou</div>
+      </li>
+      <li>
+        <div class="t-date">2019</div>
+        <div class="t-title">Baccalauréat série D</div>
+        <div class="t-place">Lycée-Collège luthérien de Moundou, Tchad</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <ul class="contact-list">
+      <li><strong>E-mail</strong> <a href="mailto:gtokne@gmail.com">gtokne@gmail.com</a></li>
+      <li><strong>Téléphone</strong> <a href="tel:+23560393214">+235 60 39 32 14</a></li>
+      <li><strong>CV</strong> <a href="CV_Tokne_Gamaidandi.pdf" target="_blank" rel="noopener">Télécharger (PDF)</a></li>
+      <!-- Ajouter si disponibles :
+      <li><strong>GitHub</strong> <a href="https://github.com/IDENTIFIANT">github.com/IDENTIFIANT</a></li>
+      <li><strong>LinkedIn</strong> <a href="https://www.linkedin.com/in/IDENTIFIANT">LinkedIn</a></li>
+      -->
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>© <span id="year"></span> Tokné Gamaïdandi</footer>
+
+<div id="viewer" role="dialog" aria-label="Image agrandie"><img alt=""><p></p></div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // Agrandir les images des galeries au clic
+  const viewer = document.getElementById('viewer');
+  document.querySelectorAll('.gallery figure').forEach(fig => {
+    fig.addEventListener('click', () => {
+      const img = fig.querySelector('img');
+      viewer.querySelector('img').src = img.src;
+      viewer.querySelector('img').alt = img.alt;
+      viewer.querySelector('p').textContent = fig.querySelector('figcaption')?.textContent || '';
+      viewer.classList.add('show');
+    });
+  });
+  viewer.addEventListener('click', () => viewer.classList.remove('show'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') viewer.classList.remove('show'); });
+</script>
+</body>
+</html>
