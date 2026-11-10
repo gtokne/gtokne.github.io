@@ -105,7 +105,7 @@
   .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; }
   .gallery:empty { display: none; }
   .gallery figure { margin: 0; cursor: zoom-in; }
-  .gallery img { width: 100%; height: 110px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+  .gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
   .gallery figcaption { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
   /* Compétences */
@@ -288,7 +288,13 @@
         <p>Mémoire soutenu le 14 juin 2023 à l’UCAO, en binôme avec E. Crédo Zoblikpo, noté 15/20.</p>
         <div class="badges"><span class="badge">ESP32</span><span class="badge">Arduino Mega</span><span class="badge">Nextion</span><span class="badge">PZEM-004T</span><span class="badge">DS1307</span><span class="badge">Relais</span><span class="badge">Proteus</span><span class="badge">Circuit imprimé</span></div>
         <p style="margin-top:14px"><a class="btn primary" href="memoire_prises_intelligentes.pdf" target="_blank" rel="noopener">Lire le mémoire (PDF)</a></p>
-        <div class="gallery"></div>
+        <div class="gallery">
+          <figure><img src="images/memoire-interface.jpg" alt="Prototype en fonctionnement : écran Nextion affichant l’état des cinq prises, carte relais et Arduino Mega" loading="lazy"><figcaption>Prototype en fonctionnement : interface Nextion et carte de commutation</figcaption></figure>
+          <figure><img src="images/memoire-circuit.jpg" alt="Circuit imprimé réalisé : alimentation et cinq relais" loading="lazy"><figcaption>Circuit imprimé : alimentation et cinq relais pilotés par transistors</figcaption></figure>
+          <figure><img src="images/memoire-accueil.jpg" alt="Page d’accueil de l’interface Nextion" loading="lazy"><figcaption>Page d’accueil de l’interface tactile</figcaption></figure>
+          <figure><img src="images/memoire-programmation-1.jpg" alt="Programmation et tests du système en laboratoire" loading="lazy"><figcaption>Programmation et tests en laboratoire</figcaption></figure>
+          <figure><img src="images/memoire-programmation-2.jpg" alt="Mise au point de l’interface Nextion" loading="lazy"><figcaption>Mise au point de l’interface</figcaption></figure>
+        </div>
       </div>
     </details>
 
