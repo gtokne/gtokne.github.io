@@ -258,25 +258,36 @@
 
     <div class="group-title">Projets techniques</div>
 
-    <details class="card">
+    <details class="card" open>
       <summary>
         <div class="sum-main">
           <h3>Système de gestion intelligente de prises électriques</h3>
-          <div class="ctx">Mémoire de licence, réalisé à BLOLAB</div>
+          <div class="ctx">Mémoire de licence, réalisé en binôme au fablab BLOLAB (Cotonou)</div>
         </div>
         <span class="date">Février – juin 2023</span>
       </summary>
       <div class="card-body">
         <h4>Objectif</h4>
-        <p>Concevoir et réaliser un prototype de gestion de prises électriques associant une carte Arduino et un capteur de courant.</p>
-        <h4>Ma contribution</h4>
+        <p>Concevoir un système de cinq prises électriques capable de contrôler, surveiller et programmer la consommation des appareils branchés, pour une gestion plus efficace de l’énergie.</p>
+        <h4>Cahier des charges</h4>
         <ul>
-          <li>Montage et programmation du prototype.</li>
-          <li>Rédaction du mémoire et soutenance.</li>
+          <li>Commander chaque prise manuellement et à distance.</li>
+          <li>Programmer des plages horaires d’utilisation pour chaque prise.</li>
+          <li>Afficher en temps réel l’état des prises et le courant consommé.</li>
+          <li>Protéger les prises contre la surcharge.</li>
+        </ul>
+        <h4>Réalisation</h4>
+        <ul>
+          <li>Architecture en blocs : alimentation, mesure, commande, traitement des données, horloge et commutation.</li>
+          <li>Écran tactile Nextion pour l’interface utilisateur, protégé par mot de passe, communiquant en Wi-Fi avec le circuit de traitement (ESP32).</li>
+          <li>Mesure du courant et de la tension par module PZEM-004T, horloge temps réel DS1307, commutation des prises par relais pilotés par transistors.</li>
+          <li>Dimensionnement de l’alimentation (transformateur, redressement, régulateur 7805), typon tracé sous Proteus, réalisation du circuit imprimé et du boîtier.</li>
+          <li>Nomenclature et évaluation financière du prototype.</li>
         </ul>
         <h4>Résultat</h4>
-        <p>Mémoire soutenu le 14 juin 2023, noté 15/20.</p>
-        <div class="badges"><span class="badge">Arduino</span><span class="badge">Capteur de courant</span><span class="badge">Prototypage</span></div>
+        <p>Mémoire soutenu le 14 juin 2023 à l’UCAO, en binôme avec E. Crédo Zoblikpo, noté 15/20.</p>
+        <div class="badges"><span class="badge">ESP32</span><span class="badge">Arduino Mega</span><span class="badge">Nextion</span><span class="badge">PZEM-004T</span><span class="badge">DS1307</span><span class="badge">Relais</span><span class="badge">Proteus</span><span class="badge">Circuit imprimé</span></div>
+        <p style="margin-top:14px"><a class="btn primary" href="memoire_prises_intelligentes.pdf" target="_blank" rel="noopener">Lire le mémoire (PDF)</a></p>
         <div class="gallery"></div>
       </div>
     </details>
